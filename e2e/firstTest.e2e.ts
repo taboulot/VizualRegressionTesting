@@ -47,7 +47,7 @@ describe('Example', () => {
   });
 
   it('display Button pressed text when user click on Test press button', async () => {
-    element(by.text('Test press')).tap();
+    await element(by.text('TEST PRESS')).tap();
     // @ts-ignorexx
     await jestExpect('button-pressed').toMatchImageSnapshot();
   });
