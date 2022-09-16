@@ -6,7 +6,9 @@ describe('App.tsx', () => {
   });
 
   it('display Button pressed text when user click on Test press button', async () => {
+    await press('pressPage');
     await press('testPress');
+
     const screen = await takeScreenshot('after-button-press');
 
     expect(screen).toMatchBaseline();

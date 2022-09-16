@@ -1,4 +1,4 @@
-import {takeScreenshot, longPress, reload} from 'react-native-owl';
+import {takeScreenshot, longPress, reload, press} from 'react-native-owl';
 
 describe('LongPress', () => {
   beforeAll(async () => {
@@ -6,6 +6,7 @@ describe('LongPress', () => {
   });
 
   it('display Button long pressed text when user click on long press button', async () => {
+    await press('pressPage');
     await longPress('testLongPress');
 
     const screen = await takeScreenshot('after-long-button-press');
