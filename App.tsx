@@ -33,6 +33,7 @@ const App = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Button
         title="TEST PRESS"
+        testID="testPress"
         onPress={() => {
           setTestPress(prev => !prev);
         }}

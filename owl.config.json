@@ -2,11 +2,11 @@
   "ios": {
     "workspace": "ios/VizualRegressionTesting.xcworkspace",
     "scheme": "VizualRegressionTesting",
-    "configuration": "Debug",
+    "configuration": "Release",
     "device": "iPhone 13"
   },
   "android": {
     "packageName": "com.vizualregressiontesting",
-    "buildType": "debug"
+    "buildType": "release"
   }
 }
