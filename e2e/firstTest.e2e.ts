@@ -51,4 +51,10 @@ describe('Example', () => {
     // @ts-ignorexx
     await jestExpect('button-pressed').toMatchImageSnapshot();
   });
+
+  it('display Button long pressed text when user click on long press button', async () => {
+    await element(by.id('testLongPress')).longPress();
+    // @ts-ignorexx
+    await jestExpect('button-long-pressed').toMatchImageSnapshot();
+  });
 });
