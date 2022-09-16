@@ -32,7 +32,7 @@ const App = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Button
-        title="Test press"
+        title="TEST PRESS"
         onPress={() => {
           setTestPress(prev => !prev);
         }}
