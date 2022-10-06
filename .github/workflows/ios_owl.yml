@@ -1,6 +1,9 @@
 name: Visual Regression - iOS - RN-OWL
 
-on: []
+on:
+  pull_request:
+    types:
+      - closed
 
 jobs:
   run-visual-regression-ios:
