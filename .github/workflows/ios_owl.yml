@@ -47,7 +47,7 @@ jobs:
           os_version: '>=15.0'
 
       - name: Run Owl Build
-        run: yarn owl:build:ios
+        run: yarn owl:ios:build
 
       - name: Run Owl Test
         run: yarn owl:ios
