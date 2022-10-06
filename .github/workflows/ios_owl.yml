@@ -1,9 +1,6 @@
 name: Visual Regression - iOS - RN-OWL
 
-on:
-  pull_request:
-    types:
-      - closed
+on: [ workflow_dispatch ]
 
 jobs:
   run-visual-regression-ios:
