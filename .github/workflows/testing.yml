@@ -30,6 +30,12 @@ jobs:
 
       - name: Emulator - Create
         run: $ANDROID_HOME/tools/bin/avdmanager create avd -n NEXUS_4 --device 'Nexus 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
+      
+      - name: Kill server
+        run: adb kill-server
+        
+      - name: Start server
+        run: adb start-server
 
       - name: Emulator - Boot
         run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
