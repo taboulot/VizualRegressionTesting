@@ -1,0 +1,48 @@
+name: Testing
+
+on: [workflow_dispatch]
+
+jobs:
+  run-visual-regression-android:
+    runs-on: macos-11
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: SKDs - download required images
+        run: $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-31;default;x86_64"
+
+      - name: SDKs - accept licenses
+        run: y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+
+      - name: Emulator - Create
+        run: $ANDROID_HOME/tools/bin/avdmanager create avd -n NEXUS_4 --device 'Nexus 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
+
+      - name: Emulator - Boot
+        run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
+
+      - name: ADB Wait For Device
+        run: adb wait-for-any-device
+        timeout-minutes: 3
+      
+      - name: Take screenshot
+        run: adb exec-out screencap -p > screen.png
+
+      - name: Store screenshots as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-screen
+          path: ./screen.png
