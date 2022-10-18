@@ -11,6 +11,9 @@ jobs:
 
       - name: Get Runner Information
         run: /usr/bin/xcodebuild -version
+      
+      - name: Install apple utils
+        run: brew tap wix/brew && brew install applesimutils
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
