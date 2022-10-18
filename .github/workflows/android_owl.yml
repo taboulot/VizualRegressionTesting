@@ -48,6 +48,11 @@ jobs:
       - name: ADB Wait For Device
         run: adb wait-for-any-device
         timeout-minutes: 3
+      
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
 
       - name: Run Owl Build
         run: yarn owl:android:build
