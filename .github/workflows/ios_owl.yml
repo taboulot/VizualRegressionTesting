@@ -12,10 +12,6 @@ jobs:
       - name: Get Runner Information
         run: /usr/bin/xcodebuild -version
 
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.7.5'
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
