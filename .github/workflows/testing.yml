@@ -39,7 +39,8 @@ jobs:
         timeout-minutes: 3
         
       - name: Press power button
-        run: adb shell input keyevent 26
+        #run: adb shell input keyevent 26
+        run: sleep 30
       
       - name: Take screenshot
         run: adb exec-out screencap -p > screen.png
