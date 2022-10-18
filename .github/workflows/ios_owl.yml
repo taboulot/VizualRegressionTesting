@@ -11,10 +11,6 @@ jobs:
 
       - name: Get Runner Information
         run: /usr/bin/xcodebuild -version
-        
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.7.5'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -31,11 +27,10 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Install bundler
-        run: gem install bundler -v 2.1.4
-
-      - name: Install ruby dependencies
-        run: bundle install
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.5'
+          bundler-cache: true
 
       - uses: actions/cache@v2
         with:
