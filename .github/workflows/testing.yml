@@ -37,6 +37,9 @@ jobs:
       - name: ADB Wait For Device
         run: adb wait-for-any-device
         timeout-minutes: 3
+        
+      - name: Press power button
+        run: adb shell input keyevent 26
       
       - name: Take screenshot
         run: adb exec-out screencap -p > screen.png
