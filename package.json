@@ -14,12 +14,12 @@
     "detox:android:build": "yarn detox  build --configuration android",
     "detox:ios:update": "DETOX_ARGV_OVERRIDE='--update-snapshot' yarn detox  test --configuration ios",
     "detox:android:update": "DETOX_ARGV_OVERRIDE='--update-snapshot' yarn detox  test --configuration android",
-    "owl:android": "yarn owl test -p android",
+    "owl:android": "__TESTING_PLATFORM__='android' yarn owl test -p android",
     "owl:android:build": "yarn owl build -p android",
-    "owl:android:update": "yarn owl test -p android -u",
-    "owl:ios": "yarn owl test -p ios",
+    "owl:android:update": "__TESTING_PLATFORM__='android' yarn owl test -p android -u",
+    "owl:ios": "__TESTING_PLATFORM__='ios' yarn owl test -p ios",
     "owl:ios:build": "yarn owl build -p ios",
-    "owl:ios:update": "yarn owl test -p ios -u"
+    "owl:ios:update": "__TESTING_PLATFORM__='ios' yarn owl test -p ios -u"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.13",

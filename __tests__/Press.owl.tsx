@@ -1,8 +1,10 @@
 import {takeScreenshot, press, reload} from 'react-native-owl';
+import {setDemoMode} from '../utils.jest';
 
 describe('App.tsx', () => {
   beforeAll(async () => {
     await reload();
+    await setDemoMode();
   });
 
   it('display Button pressed text when user click on Test press button', async () => {
