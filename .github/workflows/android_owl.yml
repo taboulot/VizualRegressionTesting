@@ -40,10 +40,10 @@ jobs:
         run: y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
       - name: Emulator - Create
-        run: $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_4_API_31 --device 'Pixel 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
+        run: $ANDROID_HOME/tools/bin/avdmanager create avd -n NEXUS_4 --device 'Nexus 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
 
       - name: Emulator - Boot
-        run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd Pixel_4_API_31 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
+        run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
 
       - name: ADB Wait For Device
         run: adb wait-for-any-device
