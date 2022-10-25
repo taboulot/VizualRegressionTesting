@@ -28,8 +28,16 @@ jobs:
       - name: SDKs - accept licenses
         run: y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
-      - name: Emulator - Create
-        run: $ANDROID_HOME/tools/bin/avdmanager create avd -n NEXUS_4 --device 'Nexus 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
+     # - name: Emulator - Create
+        #run: $ANDROID_HOME/tools/bin/avdmanager create avd -n NEXUS_4 --device 'Nexus 4' --package "system-images;android-31;default;x86_64" --sdcard 512M
+      - name: boot simulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: default
+          arch: x86_64
+          profile: Nexus 4
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
       
       - name: Kill server
         run: adb kill-server
@@ -37,8 +45,8 @@ jobs:
       - name: Start server
         run: adb start-server
 
-      - name: Emulator - Boot
-        run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
+      #- name: Emulator - Boot
+       # run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
 
       - name: ADB Wait For Device
         run: adb wait-for-any-device
@@ -47,8 +55,8 @@ jobs:
       - name: List services
         run: adb shell service list
         
-      - name: Press power button
-        run: adb shell input keyevent 26
+      #- name: Press power button
+        #run: adb shell input keyevent 26
         #run: sleep 30
       
       - name: Take screenshot
