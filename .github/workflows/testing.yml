@@ -49,12 +49,12 @@ jobs:
       #- name: Emulator - Boot
        # run: $ANDROID_HOME/emulator/emulator -memory 4096 -avd NEXUS_4 -wipe-data -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &
 
-      - name: ADB Wait For Device
-        run: adb wait-for-any-device
-        timeout-minutes: 3
+      #- name: ADB Wait For Device
+      #  run: adb wait-for-any-device
+     #   timeout-minutes: 3
       
-      - name: List services
-        run: adb shell service list
+     # - name: List services
+      #  run: adb shell service list
         
       #- name: Press power button
         #run: adb shell input keyevent 26
